@@ -1,0 +1,95 @@
+:root{
+  --bg:#0b0d12; --panel:#121521; --panel-2:#151a27; --text:#e7ecf3; --muted:#9aa4b2;
+  --brand:#4f8cff; --ok:#2fbf71; --warn:#ffbf47; --bad:#ff5c5c; --line:#253049; --mono: ui-monospace, Menlo, Consolas, monospace;
+  --radius:12px; --radius-sm:8px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:15.5px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+
+/* Layout: narrower container for better readability */
+.container{max-width:980px;margin:0 auto;padding:18px}
+.row{display:flex;align-items:center;gap:12px}
+.wrap{flex-wrap:wrap}
+.gap{gap:10px}
+.between{justify-content:space-between}
+.grow{flex:1 1 480px}
+
+/* Top bar */
+.topbar{position:sticky;top:0;background:rgba(11,13,18,.75);backdrop-filter: blur(8px);border-bottom:1px solid var(--line);z-index:10}
+.brand{font-weight:700;font-size:17px}
+.nav .nav-link{color:var(--muted);text-decoration:none;margin-left:14px}
+.nav .nav-link:hover{color:var(--text)}
+
+/* Cards with comfortable widths */
+.card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;margin:12px auto;box-shadow:0 6px 24px rgba(0,0,0,.25);max-width:980px}
+.card.grow{max-width:980px}
+.card.slim{max-width:420px}
+.card-header{border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:12px}
+.muted{color:var(--muted)}
+.label{color:var(--muted);font-size:13.5px}
+.label.sm{font-size:12.5px}
+
+/* Type and code */
+.mono{font-family:var(--mono);word-break:break-word;overflow-wrap:anywhere}
+.code{font-family:var(--mono);background:#0f1320;border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+.scroll{max-height:340px;overflow:auto}
+
+/* Input */
+.textarea{width:100%;min-height:260px;padding:12px;border-radius:var(--radius);border:1px solid var(--line);background:#0f1320;color:var(--text);resize:vertical;font-family:var(--mono)}
+.label{display:block;margin-bottom:6px}
+
+/* Buttons */
+.btn{padding:9px 13px;border-radius:10px;border:1px solid var(--line);background:#1a2235;color:var(--text);cursor:pointer}
+.btn:hover{background:#202a41}
+.btn.primary{background:var(--brand);border-color:transparent}
+.btn.primary:hover{filter:brightness(1.05)}
+.btn.ghost{background:transparent}
+
+/* Lists */
+.list{margin:6px 0 0 18px}
+.list li{margin:6px 0}
+
+/* Grid: default single column; create two columns at medium+ */
+.grid{display:grid;gap:14px}
+.grid.two{grid-template-columns:1fr}
+@media (min-width:1000px){
+  .grid.two{grid-template-columns:1fr 1fr}
+}
+
+/* Key-value rows: reduce label column width so values breathe */
+.kv{display:grid;gap:6px}
+.kv-row{display:grid;grid-template-columns:140px 1fr;gap: 1px;;align-items:center}
+.kv dt{color:var(--muted);word-break:break-word;overflow-wrap:anywhere}
+.kv dd{margin:0;word-break:break-word;overflow-wrap:anywhere}
+/* Mobile stack */
+@media (max-width:640px){
+  .kv-row{grid-template-columns:1fr}
+  .kv dt{margin-bottom:4px}
+}
+
+/* Pills */
+.pills{display:flex;gap:8px;flex-wrap:wrap;row-gap:8px}
+.pill{padding:6px 10px;border-radius:999px;background:#1a2235;border:1px solid var(--line);font-size:12.5px;white-space:nowrap}
+.pill.ok{background:rgba(47,191,113,.12);border-color:rgba(47,191,113,.25)}
+.pill.warn{background:rgba(255,191,71,.12);border-color:rgba(255,191,71,.25)}
+.pill.muted{opacity:.7}
+
+/* Timeline */
+.timeline{list-style:none;padding:0;margin:0}
+.timeline-item{position:relative;padding-left:18px;margin:12px 0}
+.timeline-item::before{content:"";position:absolute;left:6px;top:6px;bottom:-6px;width:2px;background:var(--line)}
+.timeline-item::after{content:"";position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%;background:var(--brand)}
+.badge{background:#1a2235;border:1px solid var(--line);padding:3px 8px;border-radius:999px;font-size:12px;white-space:nowrap}
+.tl-date{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+@media (max-width:640px){ .tl-date{max-width:64vw} }
+
+/* Footer */
+.footer{border-top:1px solid var(--line);margin-top:14px}
+.footer p{color:var(--muted);font-size:13.5px}
+
+/* Compact on small screens */
+@media (max-width:640px){
+  .container{padding:14px}
+  .card{padding:14px}
+  .scroll{max-height:280px}
+}
